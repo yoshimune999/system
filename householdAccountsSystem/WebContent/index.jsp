@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/bootstrap.css">
 <link rel="stylesheet" href="./css/fixed.css">
+<link rel="stylesheet" href="/householdAccountsSystem/css/login_style.css">
 <script type="text/javascript">
 	//入力値チェック
 	function check() {
@@ -26,16 +27,32 @@
 </head>
 
 <body>
-	<h1>我が家の家計簿へようこそ！</h1>
-	<h2>さあ、見たくない現実を見ていこう</h2>
-	<form  action="/householdAccountsSystem/LoginServlet" method="post" name="loginForm">
-	NAME<br>
-	<input type="text" name="name" placeholder="ユーザー名"><br>
-	PASS<br>
-	<input type="password" name="pass"  placeholder="パスワード"><br>
-	<input type="submit" value="ログイン" onclick="return check()">
-	</form>
-	<p>未登録の場合は<a href="/householdAccountsSystem/SignInServlet">サインアップ</a>してください</p>
+
+	<div class="landing">
+			<div class="home-wrap">
+				<div class="home-inner">
+
+				</div>
+			</div>
+	</div>
+
+	<div class="caption text-center">
+	<h1 class="pb-5">ACCOUNT BOOK</h1>
+	<div class="text">
+	<div class="boxline">
+		<h3 class="text-center">ログイン</h3>
+		<form  action="/householdAccountsSystem/LoginServlet" method="post" name="loginForm">
+			NAME:<br>
+			<input type="text" class="form-control" name="name" placeholder="user"><br>
+			PASS:<br>
+			<input type="password" class="form-control" name="pass"  placeholder="password"><br>
+			<input type="submit" class="btn" value="ログイン" onclick="return check()">
+			</form>
+	</div>
+			<p>未登録の場合は<a href="/householdAccountsSystem/SignInServlet">サインアップ</a>してください</p>
+	</div>
+	</div>
+
 
 <script type="text/javascript" src="/householdAccountsSystem/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="/householdAccountsSystem/js/bootstrap.min.js"></script>
