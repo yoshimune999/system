@@ -172,7 +172,7 @@
 
 		<div class="caption text-center">
 			<h1>WELCOME TO ACCOUNT BOOK</h1>
-			<h2 class="font-weight-normal"><%=loginAccount.getUserName() %>さん</h2>
+			<h2 class="font-weight-normal mt-5"><c:out value="<%=loginAccount.getUserName() %>"/>さん</h2>
 		</div>
 
 	</div>
@@ -323,7 +323,7 @@
 
 	<div class="addItem container" id="addItem">
 		<div class="boxline">
-		<h2>項目を追加</h2>
+		<h2>実績を追加</h2>
 		<form class="form-inline" action="/householdAccountsSystem/MainServlet?addItemForm=done" method="post" name="addItemForm">
 			<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="date">
 			</select>
@@ -352,6 +352,9 @@
 		for (int i=0; i<expenceTotalList.size(); i++) {
 			id.add(expenceTotalList.get(i).getExpenceId());
 		}
+		if(budgetMap.isEmpty()) { %>
+			<p>現在予算が登録されていません</p>
+		<% }
 		for(Integer key : budgetMap.keySet()) {
 			AddBudget addBudget = budgetMap.get(key);
 			int budget = addBudget.getAmount(); %>

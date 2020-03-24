@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="./css/fixed.css">
 <link rel="stylesheet" href="/householdAccountsSystem/css/login_style.css">
 <script type="text/javascript">
-	//入力値チェック
 	function check() {
 		if (loginForm.name.value == ""){
 			alert("ユーザー名を入力してください");
@@ -47,12 +46,11 @@
 			PASS:<br>
 			<input type="password" class="form-control" name="pass"  placeholder="password"><br>
 			<input type="submit" class="btn" value="ログイン" onclick="return check()">
-			</form>
+		</form>
 	</div>
 			<p>未登録の場合は<a href="/householdAccountsSystem/SignInServlet">サインアップ</a>してください</p>
 	</div>
 	</div>
-
 
 <script type="text/javascript" src="/householdAccountsSystem/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="/householdAccountsSystem/js/bootstrap.min.js"></script>
