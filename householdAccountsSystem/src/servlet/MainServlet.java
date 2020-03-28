@@ -246,6 +246,19 @@ public class MainServlet extends HttpServlet {
 				request.setAttribute("expenceTotalList", expenceTotalList);
 			}
 
+			//先月の費目
+			List<ExpenceTotal> secondExpenceTotalList = dao.getSecondExpenceTotal(loginAccount);
+			if (expenceTotalList != null) {
+				//リクエストスコープに保存
+				request.setAttribute("secondExpenceTotalList", secondExpenceTotalList);
+			}
+			//先々月の費目
+			List<ExpenceTotal> thirdExpenceTotalList = dao.getThirdExpenceTotal(loginAccount);
+			if (expenceTotalList != null) {
+				//リクエストスコープに保存
+				request.setAttribute("thirdExpenceTotalList", thirdExpenceTotalList);
+			}
+
 			//費目ごとの予算を取得
 			Map<Integer,AddBudget> budgetMap = dao.getBudget(loginAccount);
 			if (expenceTotalList != null) {

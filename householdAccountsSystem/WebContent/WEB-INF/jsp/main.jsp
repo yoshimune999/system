@@ -148,7 +148,7 @@
 						<a class="nav-link" href="#expenceTotal">今月の状況</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#addItem">項目を追加</a>
+						<a class="nav-link" href="#addItem">実績を追加</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#budget">予算残高</a>
@@ -181,9 +181,12 @@
 
 
 	<div class="history "id="history">
-		<h1 class="text-white text-center bg-dark">追加履歴</h1>
+		<h1 class="text-white text-center bg-dark">履歴</h1>
 		<table class="table">
 		<thead class="thead-dark"><tr><th>DATE</th><th>ITEM</th><th>AMOUNT</th><th>MEMO</th></tr></thead>
+			<% if(historyList.isEmpty()){ %>
+			<tr><th>現在、履歴がありません</th><th></th><th> </th><th> </th></tr>
+			<% } %>
 			<% for(History his : historyList) {%>
 				<tr><th><%= his.getDate() %></th><th><%= his.getExpence() %></th><th>
 					<% if(his.getDAmount() != 0){%>
@@ -353,24 +356,24 @@
 			id.add(expenceTotalList.get(i).getExpenceId());
 		}
 		if(budgetMap.isEmpty()) { %>
-			<p>現在予算が登録されていません</p>
+			<p>現在、予算が登録されていません</p>
 		<% }
 		for(Integer key : budgetMap.keySet()) {
 			AddBudget addBudget = budgetMap.get(key);
 			int budget = addBudget.getAmount(); %>
-			<ul>
+			<ul style="margin-right: 20px;">
 				<li class="pb-4">
 					<%= addBudget.getExpenceName() %> : <%= addBudget.getAmount() %>円
 					<% for(ExpenceTotal exp : expenceTotalList) {
 						int wAmount = exp.getWAmountTotal();
+						double width =  (budget - wAmount + 0.0) / (budget + 0.0) * 100;
 						if (key == exp.getExpenceId()) { %>
 							<div class="progress" style="height: 20px;">
 								<% if (budget >= wAmount) { %>
 									<div class="progress-bar progress-bar-striped progress-bar-animated bg-success " role="progressbar"
 									aria-valuenow="<%= budget - wAmount %>" aria-valuemin="0"
 									aria-valuemax="<%= budget %>"
-									style="width:
-									<% if (String.valueOf(budget - wAmount).length() == 4) { %><%= (budget - wAmount) / 100.0%><% } else if (String.valueOf(budget - wAmount).length() == 5) {%><%= (budget - wAmount) / 1000.0%><% } else if (String.valueOf(budget - wAmount).length() == 6) {%><%= (budget - wAmount) / 10000.0%><% } else if (String.valueOf(budget - wAmount).length() == 7) {%><%= (budget - wAmount) / 100000.0%><% } else if (String.valueOf(budget - wAmount).length() == 8) {%><%= (budget - wAmount) / 1000000.0%><% } else if (String.valueOf(budget - wAmount).length() == 9) {%><%= (budget - wAmount) / 10000000.0%><% } else if (String.valueOf(budget - wAmount).length() == 10) {%><%= (budget - wAmount) / 100000000.0%><% } else if (budget - wAmount == budget) {%><%= budget %><% } %>%;">残り<%= addBudget.getAmount() - exp.getWAmountTotal() %>円</div>
+									style="width: <%= width %>%;">残り<%=budget - wAmount %>円</div>
 								<% } else if (budget <= wAmount) {%>
 									<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger " role="progressbar"
 									aria-valuenow="0" aria-valuemin="0"

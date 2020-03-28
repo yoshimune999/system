@@ -11,6 +11,9 @@
 <head>
 <meta charset="UTF-8">
 <title>家計簿アプリケーション</title>
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/bootstrap.css">
+<link rel="stylesheet" href="./css/fixed.css">
 </head>
 <body>
 	<% if(em != null) {%>
@@ -27,5 +30,8 @@
 	<p><%= signInUser.getUserName() %>さん、登録完了しました。</p>
 	<h3><a href="/householdAccountsSystem">ログイン画面へ戻る</a></h3>
 	<% } %>
+
+<script type="text/javascript" src="/householdAccountsSystem/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/householdAccountsSystem/js/bootstrap.min.js"></script>
 </body>
 </html>
